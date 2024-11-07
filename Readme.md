@@ -130,6 +130,10 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      ```bash
      uv sync 
      ```
+   - Install `bokeh` package
+     ```bash
+     uv add bokeh>=3.1.0
+     ```
    - Activate the virtual environment:
      ```bash
      source .venv/bin/activate
