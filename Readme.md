@@ -76,14 +76,14 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
    - Note the IP address and port (usually `8786`) where the scheduler is running.
    - On both instances, start Dask workers and connect them to the scheduler:
      ```bash
-     dask-worker your-scheduler-local-ip:8786
+     dask worker your-scheduler-local-ip:8786
      ```
 
 3. Note: to run the `dask` scheduler and worker in background, you can use following approaches:
    1. **Using `nohup`**: You can use `nohup` to run the Dask worker in the background, which allows it to continue running even if you log out of the session:
 
       ```bash
-      nohup dask-worker tcp://<your-scheduler-local-ip>:8786 &
+      nohup dask worker tcp://<your-scheduler-local-ip>:8786 &
       ```
 
       This command will start the worker in the background and redirect its output to a file named `nohup.out` by default.
@@ -91,14 +91,14 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
    2. **Using `&`**: Simply appending `&` to the command runs it in the background:
 
       ```bash
-      dask-worker tcp://<your-scheduler-local-ip>:8786 &
+      dask worker tcp://<your-scheduler-local-ip>:8786 &
       ```
 
    3. **Using `screen` or `tmux`**: These tools allow you to run processes in a detachable session. You can start a session, run the worker, and then detach:
 
       ```bash
       screen -S dask_worker
-      dask-worker tcp://<your-scheduler-local-ip>:8786
+      dask worker tcp://<your-scheduler-local-ip>:8786
       # Press Ctrl+A, then D to detach
       ```
 
