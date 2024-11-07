@@ -74,12 +74,58 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      dask-worker your-scheduler-ip:8786
      ```
 
+3. Note: to run the `dask` scheduler and worker in background, you can use following approaches:
+   1. **Using `nohup`**: You can use `nohup` to run the Dask worker in the background, which allows it to continue running even if you log out of the session:
+
+      ```bash
+      nohup dask-worker tcp://192.168.1.100:8786 &
+      ```
+
+      This command will start the worker in the background and redirect its output to a file named `nohup.out` by default.
+
+   2. **Using `&`**: Simply appending `&` to the command runs it in the background:
+
+      ```bash
+      dask-worker tcp://192.168.1.100:8786 &
+      ```
+
+   3. **Using `screen` or `tmux`**: These tools allow you to run processes in a detachable session. You can start a session, run the worker, and then detach:
+
+      ```bash
+      screen -S dask_worker
+      dask-worker tcp://192.168.1.100:8786
+      # Press Ctrl+A, then D to detach
+      ```
+
+      To reattach, use `screen -r dask_worker`.
+
+4. In order to kill the existing `dask` worker process, you can find the process ID (PID) of the Dask worker using `ps` or `pgrep`, then kill it:
+
+   ```bash
+   pgrep -f 'dask-worker'
+   kill <PID>
+   ```
+
+   Or directly:
+
+   ```bash
+   pkill -f 'dask-worker'
+
 ### Section 3: Setup Jupyter Lab
 
-1. **Install Jupyter Lab:**
-   - On one of the instances, install Jupyter Lab using `uv`:
+1. **Prepare the project:**
+   - Clone the repository:
      ```bash
-     uv install jupyterlab
+     git clone https://github.com/bhawiyuga/aws-geospatial-itc.git
+     cd aws-geospatial-itc 
+     ```
+   - Syncronize the dependency:
+     ```bash
+     uv sync 
+     ```
+   - Activate the virtual environment:
+     ```bash
+     source .venv/bin/activate
      ```
 
 2. **Configure Jupyter Lab:**
@@ -113,4 +159,4 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
 - [Jupyter Lab Documentation](https://jupyterlab.readthedocs.io/)
 
 ## Contact
-For any questions or further information, please contact me through email or Teams.
+For any questions or further information, please contact me through email or Teams (a.bhawiyuga@utwente.nl).
