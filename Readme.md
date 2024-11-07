@@ -65,7 +65,7 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      ```
    - Install Dask and distributed using `uvx`:
      ```bash
-     uvx install dask distributed
+     sudo apt install python3-dask python3-distributed
      ```
 
 2. **Start Dask Scheduler and Workers:**
