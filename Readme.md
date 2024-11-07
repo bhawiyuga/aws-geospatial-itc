@@ -71,14 +71,14 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
    - Note the IP address and port (usually `8786`) where the scheduler is running.
    - On both instances, start Dask workers and connect them to the scheduler:
      ```bash
-     dask-worker your-scheduler-ip:8786
+     dask-worker your-scheduler-local-ip:8786
      ```
 
 3. Note: to run the `dask` scheduler and worker in background, you can use following approaches:
    1. **Using `nohup`**: You can use `nohup` to run the Dask worker in the background, which allows it to continue running even if you log out of the session:
 
       ```bash
-      nohup dask-worker tcp://192.168.1.100:8786 &
+      nohup dask-worker tcp://<your-scheduler-local-ip>:8786 &
       ```
 
       This command will start the worker in the background and redirect its output to a file named `nohup.out` by default.
@@ -86,20 +86,22 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
    2. **Using `&`**: Simply appending `&` to the command runs it in the background:
 
       ```bash
-      dask-worker tcp://192.168.1.100:8786 &
+      dask-worker tcp://<your-scheduler-local-ip>:8786 &
       ```
 
    3. **Using `screen` or `tmux`**: These tools allow you to run processes in a detachable session. You can start a session, run the worker, and then detach:
 
       ```bash
       screen -S dask_worker
-      dask-worker tcp://192.168.1.100:8786
+      dask-worker tcp://<your-scheduler-local-ip>:8786
       # Press Ctrl+A, then D to detach
       ```
 
       To reattach, use `screen -r dask_worker`.
 
-4. In order to kill the existing `dask` worker process, you can find the process ID (PID) of the Dask worker using `ps` or `pgrep`, then kill it:
+4. You can access the `dask` dashboard using the browser. Typically, the daskboard is available on port 8787. Therefore, you can access from the following link: `http://your-scheduler-ec2-public-dns:8787`.
+
+5. In order to kill the existing `dask` worker process, you can find the process ID (PID) of the Dask worker using `ps` or `pgrep`, then kill it:
 
    ```bash
    pgrep -f 'dask-worker'
