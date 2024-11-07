@@ -1,0 +1,15 @@
+[project]
+name = "aws-geospatial-itc"
+version = "0.1.0"
+description = "This session covers various cloud-based service models and an overview of AWS basic services. Students will gain insights into how AWS technologies can enhance geospatial processing workflows and analysis."
+readme = "Readme.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dask>=2024.10.0",
+    "distributed>=2024.10.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.9.2",
+    "odc-stac>=0.3.10",
+    "pystac-client>=0.8.5",
+    "rioxarray>=0.18.0",
+]
