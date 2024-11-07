@@ -59,6 +59,10 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      sudo apt update -y  # For Ubuntu
      curl -LsSf https://astral.sh/uv/install.sh | sh
      ```
+   - Set the binary path of `uv`
+     ```bash
+     source $HOME/.cargo/env
+     ```
    - Install Dask and distributed using `uvx`:
      ```bash
      uvx install dask distributed
