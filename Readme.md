@@ -37,7 +37,8 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
    - Select or create a new key pair for SSH access and download it.
 
 3. **Access EC2 Instances with SSH:**
-   - Open a terminal on your local machine.
+   - Open a Terminal on your local machine.
+     - **Note:** if you are using Windows, it is better to use GitBash. [Download it here](https://git-scm.com/downloads/win). The path location in Windows's GitHub is started with `/`. For instance for accessing `C:\Users` you can access using `/c/Users`.
    - Change permissions of the downloaded key pair file:
      ```bash
      chmod 400 your-key-pair.pem
