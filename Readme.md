@@ -32,9 +32,12 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
    - Add tags (optional, but tagging helps in managing instances).
    - Configure security group:
      - Create a new security group or select an existing one.
-     - Add rules to allow SSH (port 22) and Jupyter Lab (port 8888) access.
+     - Add rules to allow following ports:
+       - SSH (port 22) for any IP `0.0.0.0/0`
+       - Jupyter Lab (port 8888) access for any IP `0.0.0.0/0`
+       - All TCP Port for local private subnet. For example if you are using default subnet, the subnet would be `172.31.0.0/16`. Please check the VPC subnet on EC2 instance creation config.
+   - Select or create a new key pair for SSH access and download it. Save it securely as you cannot download it again in the future.
    - Review and launch the instance.
-   - Select or create a new key pair for SSH access and download it.
 
 3. **Access EC2 Instances with SSH:**
    - Open a Terminal on your local machine.
@@ -57,21 +60,32 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      ```bash
      sudo yum update -y  # For Amazon Linux
      sudo apt update -y  # For Ubuntu
+
      curl -LsSf https://astral.sh/uv/install.sh | sh
      ```
    - Set the binary path of `uv`
      ```bash
      source $HOME/.cargo/env
      ```
-   - Install Dask and distributed using `uvx`:
+
+2. **Prepare the project including package installation:**
+   - Clone the repository:
      ```bash
-     sudo apt install python3-dask python3-distributed -y
+     git clone https://github.com/bhawiyuga/aws-geospatial-itc.git
+     cd aws-geospatial-itc 
+     ```
+   - Activate the virtual environment:
+     ```bash
+     source .venv/bin/activate
+   - Syncronize the dependency:
+     ```bash
+     uv sync 
      ```
 
-2. **Start Dask Scheduler and Workers:**
-   - On one of the instances, start the Dask scheduler:
+3. **Start Dask Scheduler and Workers:**
+   - On one of the instances, start the Dask scheduler from the project directory:
      ```bash
-     dask-scheduler
+     dask scheduler
      ```
    - Note the IP address and port (usually `8786`) where the scheduler is running.
    - On both instances, start Dask workers and connect them to the scheduler:
@@ -79,7 +93,7 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      dask worker your-scheduler-local-ip:8786
      ```
 
-3. Note: to run the `dask` scheduler and worker in background, you can use following approaches:
+4. Note: to run the `dask` scheduler and worker in background, you can use following approaches:
    1. **Using `nohup`**: You can use `nohup` to run the Dask worker in the background, which allows it to continue running even if you log out of the session:
 
       ```bash
@@ -104,9 +118,9 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
 
       To reattach, use `screen -r dask_worker`.
 
-4. You can access the `dask` dashboard using the browser. Typically, the daskboard is available on port 8787. Therefore, you can access from the following link: `http://your-scheduler-ec2-public-dns:8787`.
+5. You can access the `dask` dashboard using the browser. Typically, the daskboard is available on port 8787. Therefore, you can access from the following link: `http://your-scheduler-ec2-public-dns:8787`.
 
-5. In order to kill the existing `dask` worker process, you can find the process ID (PID) of the Dask worker using `ps` or `pgrep`, then kill it:
+6. In order to kill the existing `dask` worker process, you can find the process ID (PID) of the Dask worker using `ps` or `pgrep`, then kill it:
 
    ```bash
    pgrep -f 'dask-worker'
@@ -120,25 +134,7 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
 
 ### Section 3: Setup Jupyter Lab
 
-1. **Prepare the project:**
-   - Clone the repository:
-     ```bash
-     git clone https://github.com/bhawiyuga/aws-geospatial-itc.git
-     cd aws-geospatial-itc 
-     ```
-   - Syncronize the dependency:
-     ```bash
-     uv sync 
-     ```
-   - Activate the virtual environment:
-     ```bash
-     source .venv/bin/activate
-   - Install `bokeh` package
-     ```bash
-     uv add bokeh>=3.1.0
-     ```
-
-2. **Configure Jupyter Lab:**
+1. **Configure Jupyter Lab:**
    - Generate a Jupyter configuration file:
      ```bash
      jupyter lab --generate-config
@@ -150,14 +146,14 @@ Setting up a Dask cluster with Jupyter Lab on AWS EC2 involves several steps. Be
      c.ServerApp.port = 8888
      ```
 
-3. **Start Jupyter Lab:**
+2. **Start Jupyter Lab:**
    - Start Jupyter Lab:
      ```bash
      jupyter lab
      ```
    - Access Jupyter Lab from your local machine by navigating to `http://your-ec2-public-dns:8888` in a web browser. You might need to provide a token, which is displayed in the terminal when Jupyter Lab starts.
 
-4. **Connect Jupyter Lab to Dask Cluster:**
+3. **Connect Jupyter Lab to Dask Cluster:**
    - In Jupyter Lab, install the Dask Labextension for better integration:
      ```bash
      jupyter labextension install dask-labextension
