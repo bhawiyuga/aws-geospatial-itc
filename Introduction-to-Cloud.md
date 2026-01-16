@@ -733,90 +733,90 @@ AWS pricing has three main components:
 
 ### Official AWS Documentation
 
-1. **AWS Getting Started**: https://aws.amazon.com/getting-started/
+1. **AWS Getting Started**: [https://aws.amazon.com/getting-started/](https://aws.amazon.com/getting-started/)
    - Free tutorials and hands-on labs
    
-2. **AWS EC2 User Guide**: https://docs.aws.amazon.com/ec2/
+2. **AWS EC2 User Guide**: [https://docs.aws.amazon.com/ec2/](https://docs.aws.amazon.com/ec2/)
    - Complete reference for EC2 instances
    
-3. **AWS S3 Documentation**: https://docs.aws.amazon.com/s3/
+3. **AWS S3 Documentation**: [https://docs.aws.amazon.com/s3/](https://docs.aws.amazon.com/s3/)
    - Object storage best practices
 
-4. **AWS Pricing**: https://aws.amazon.com/pricing/
+4. **AWS Pricing**: [https://aws.amazon.com/pricing/](https://aws.amazon.com/pricing/)
    - Detailed pricing for all services
 
-5. **AWS Free Tier**: https://aws.amazon.com/free/
+5. **AWS Free Tier**: [https://aws.amazon.com/free/](https://aws.amazon.com/free/)
    - What's included in free tier
 
 ### Geospatial on AWS
 
-1. **AWS Earth on AWS**: https://aws.amazon.com/earth/
+1. **AWS Earth on AWS**: [https://aws.amazon.com/earth/](https://aws.amazon.com/earth/)
    - Geospatial datasets and case studies
    
-2. **Registry of Open Data on AWS**: https://registry.opendata.aws/
+2. **Registry of Open Data on AWS**: [https://registry.opendata.aws/](https://registry.opendata.aws/)
    - Free datasets: Landsat, Sentinel, NAIP, and more
    - Tag: "earth observation"
 
-3. **Landsat on AWS**: https://registry.opendata.aws/landsat-8/
+3. **Landsat on AWS**: [https://registry.opendata.aws/landsat-8/](https://registry.opendata.aws/landsat-8/)
    - Direct S3 access to entire Landsat archive
 
-4. **Sentinel-2 on AWS**: https://registry.opendata.aws/sentinel-2/
+4. **Sentinel-2 on AWS**: [https://registry.opendata.aws/sentinel-2/](https://registry.opendata.aws/sentinel-2/)
    - Cloud-optimized GeoTIFFs on S3
 
 ### Containers and Docker
 
-1. **Docker Documentation**: https://docs.docker.com/
+1. **Docker Documentation**: [https://docs.docker.com/](https://docs.docker.com/)
    - Official Docker guide and tutorials
    
-2. **Docker Hub - Geospatial Images**: https://hub.docker.com/
+2. **Docker Hub - Geospatial Images**: [https://hub.docker.com/](https://hub.docker.com/)
    - Search: "gdal", "postgis", "qgis"
    - OSGeo official images
 
-3. **AWS ECS Documentation**: https://docs.aws.amazon.com/ecs/
+3. **AWS ECS Documentation**: [https://docs.aws.amazon.com/ecs/](https://docs.aws.amazon.com/ecs/)
    - Complete guide to ECS and Fargate
 
-4. **AWS Batch User Guide**: https://docs.aws.amazon.com/batch/
+4. **AWS Batch User Guide**: [https://docs.aws.amazon.com/batch/](https://docs.aws.amazon.com/batch/)
    - Batch processing best practices
 
-5. **Kubernetes Documentation**: https://kubernetes.io/docs/
+5. **Kubernetes Documentation**: [https://kubernetes.io/docs/](https://kubernetes.io/docs/)
    - For EKS users
 
-6. **Dask on Kubernetes**: https://kubernetes.dask.org/
+6. **Dask on Kubernetes**: [https://kubernetes.dask.org/](https://kubernetes.dask.org/)
    - Deploy Dask clusters on EKS
 
 ### Cloud-Optimized Formats
 
-1. **Cloud-Optimized GeoTIFF (COG)**: https://www.cogeo.org/
+1. **Cloud-Optimized GeoTIFF (COG)**: [https://www.cogeo.org/](https://www.cogeo.org/)
    - Why and how to create COGs
    
-2. **STAC Specification**: https://stacspec.org/
+2. **STAC Specification**: [https://stacspec.org/](https://stacspec.org/)
    - SpatioTemporal Asset Catalogs
 
 ### Tutorials and Courses
 
-1. **AWS Training and Certification**: https://aws.amazon.com/training/
+1. **AWS Training and Certification**: [https://aws.amazon.com/training/](https://aws.amazon.com/training/)
    - Free digital courses
    - Cloud Practitioner Essentials (recommended)
 
-2. **Awesome AWS**: https://github.com/donnemartin/awesome-aws
+2. **Awesome AWS**: [https://github.com/donnemartin/awesome-aws](https://github.com/donnemartin/awesome-aws)
    - Curated list of AWS libraries, tools, and guides
 
-3. **Dask Documentation**: https://docs.dask.org/
+3. **Dask Documentation**: [https://docs.dask.org/](https://docs.dask.org/)
    - Parallel computing with Dask (relevant for Day 2!)
 
-4. **Pangeo Project**: https://pangeo.io/
+4. **Pangeo Project**: [https://pangeo.io/](https://pangeo.io/)
    - Cloud-native geoscience workflows
    - Examples with Dask on cloud
 
 ### Community and Support
 
-1. **AWS re:Post**: https://repost.aws/
+1. **AWS re:Post**: [https://repost.aws/](https://repost.aws/)
    - Community Q&A forum
    
-2. **GIS Stack Exchange**: https://gis.stackexchange.com/
+2. **GIS Stack Exchange**: [https://gis.stackexchange.com/](https://gis.stackexchange.com/)
    - Tag your questions with 'amazon-web-services'
 
-3. **r/aws** (Reddit): https://reddit.com/r/aws
+3. **r/aws** (Reddit): [https://reddit.com/r/aws](https://reddit.com/r/aws)
    - Active community discussions
 
 ---
