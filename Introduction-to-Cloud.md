@@ -1,3 +1,8 @@
+---
+title: Introdution to Cloud Computing - Big Geodata Processing course (UT-ITC)
+layout: default
+---
+
 # Introdution to Cloud Computing 
 This pre-class reading note is part of Big Geodata Processing course of master program teached in Faculty of ITC, University of Twente.
 
